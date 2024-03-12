@@ -36,13 +36,11 @@ fails := 0
 total := 0
 
 func assert want:any got:any
-    if want == got
-        total = total + 1
-        return
-    end
-    fails = fails + 1
     total = total + 1
-    printf "want != got: want %v got %v\n" want got
+    if want != got
+        fails = fails + 1
+        printf "want != got: want %v got %v\n" want got
+    end
 end
 
 func finished
