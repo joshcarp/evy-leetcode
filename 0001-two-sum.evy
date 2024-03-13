@@ -25,11 +25,11 @@
 // Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
 func twosum:[]num nums:[]num target:num
-    m := {}
+    m:{}num
     for i := range (len nums)
         v := nums[i]
         if has m (sprintf "%v" (target - v))
-            return [(str2num (sprintf "%v" m[sprintf "%v" (target - v)])) i] // str2num expects a string but m[key] returns any. Didn't find any other way to do this.
+            return [m[sprintf "%v" (target - v)] i]
         end
         m[sprintf "%v" v] = i
     end
