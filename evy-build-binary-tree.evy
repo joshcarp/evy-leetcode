@@ -1,0 +1,47 @@
+// buildBinaryTree takes a list of strings and returns a binary tree.
+
+func buildBinaryTree:{}any tree:[]any
+    root:{}any
+    rootany:any
+    rootany = root
+    queue := [rootany]
+    for i := range 0 (len tree)
+        node:{}any
+        node = queue[0].({}any)
+        queue = queue[1:]
+        if tree[i].(string) != "any"
+            node["val"] = tree[i].(string)
+            node["left"] = {}
+            node["right"] = {}
+            queue = queue + [node["left"]]
+            queue = queue + [node["right"]]
+        end
+    end
+    return root
+end
+
+fails := 0
+total := 0
+
+func assert want:any got:any
+    total = total + 1
+    if want != got
+        fails = fails + 1
+        printf "want != got: want %v got %v\n" want got
+    end
+end
+
+func finished
+    printf "%v of %v tests passed\n" (total - fails) total
+end
+
+// -- Test Cases Start -- //
+tree := buildBinaryTree ["a" "b" "c"]
+assert "a" tree["val"]
+assert "b" tree["left"].({}any)["val"]
+assert "c" tree["right"].({}any)["val"]
+
+tree2 := buildBinaryTree ["a"]
+assert "a" tree2["val"]
+// // -- Test Cases End -- //
+finished
