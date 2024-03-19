@@ -9,7 +9,7 @@ func buildBinaryTree:{}any tree:[]any
         node:{}any
         node = queue[0].({}any)
         queue = queue[1:]
-        if tree[i].(string) != "any"
+        if tree[i].(string) != "null"
             node["val"] = tree[i].(string)
             node["left"] = {}
             node["right"] = {}
