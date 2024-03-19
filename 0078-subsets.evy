@@ -24,11 +24,7 @@ func backtrack nums:[]num current:[]num ans:[][]num
         return
     end
     for range nums
-        if (len nums) > 1
-            backtrack nums[1:] current ans
-        else
-            backtrack [] current ans
-        end
+        backtrack nums[1:] current ans
         current = current + [nums[0]]
         if (len nums) > 1
             backtrack nums[1:] current ans
