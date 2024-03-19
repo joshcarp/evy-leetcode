@@ -18,6 +18,9 @@
 // s1 and s2 consist of lowercase English letters.
 
 func checkInclusion:bool s1:string s2:string
+    if (len s1) > (len s2)
+        return false
+    end
     s1count:{}num
     s2count:{}num
     for i := range (len s1)
@@ -68,5 +71,6 @@ end
 assert true (checkInclusion "ab" "ab")
 assert true (checkInclusion "ab" "eidbaooo")
 assert false (checkInclusion "ab" "eidboaoo")
+assert false (checkInclusion "ab" "a")
 // // -- Test Cases End -- //
 finished
