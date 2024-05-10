@@ -29,23 +29,9 @@ func maxProfit:num prices:[]num
     return mprofit
 end
 
-fails := 0
-total := 0
 
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    end
+
+func test
+    assertEqual 5 (maxProfit [7 1 5 3 6 4])
+    assertEqual 0 (maxProfit [7 6 4 3 1])
 end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
-// -- Test Cases Start -- //
-assert 5 (maxProfit [7 1 5 3 6 4])
-assert 0 (maxProfit [7 6 4 3 1])
-// -- Test Cases End -- //
-finished

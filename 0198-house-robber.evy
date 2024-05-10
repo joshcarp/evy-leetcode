@@ -31,23 +31,9 @@ func rob:num nums:[]num
     return max_steal[-1]
 end
 
-fails := 0
-total := 0
 
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    end
+
+func test
+    assertEqual 4 (rob [1 2 3 1])
+    assertEqual 12 (rob [2 7 9 3 1])
 end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
-// -- Test Cases Start -- //
-assert 4 (rob [1 2 3 1])
-assert 12 (rob [2 7 9 3 1])
-// -- Test Cases End -- //
-finished

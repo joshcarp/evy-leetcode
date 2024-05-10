@@ -80,31 +80,12 @@ func startsWith:bool self:{}any prefix:string
     return true
 end
 
-fails := 0
-total := 0
-debug := false
-
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    else if debug
-        printf "assertion passed: want %v got %v\n" want got
-    end
+func test
+    trie := (Trie)
+    insert trie "apple"
+    assertEqual true (search trie "apple")
+    assertEqual false (search trie "app")
+    assertEqual true (startsWith trie "app")
+    insert trie "app"
+    assertEqual true (search trie "app")
 end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
-// -- Test Cases Start -- //
-trie := (Trie)
-insert trie "apple"
-assert true (search trie "apple")
-assert false (search trie "app")
-assert true (startsWith trie "app")
-insert trie "app"
-assert true (search trie "app")
-// -- Test Cases End -- //
-finished

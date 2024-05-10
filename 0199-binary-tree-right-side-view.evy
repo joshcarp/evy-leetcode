@@ -43,21 +43,6 @@ func rightSideView:[]any treearr:[]any
     return res
 end
 
-fails := 0
-total := 0
-
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    end
-end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
 func buildBinaryTree:{}any tree:[]any
     root:{}any
     rootany:any
@@ -83,11 +68,9 @@ func buildBinaryTree:{}any tree:[]any
     return root
 end
 
-// -- Test Cases Start -- //
-
-assert [1 3 4 ""][:-1] (rightSideView [1 2 3 "null" 5 "null" 4])
-assert [1 3 ""][:-1] (rightSideView [1 "null" 3])
-assert [] (rightSideView [])
-assert [1 3 4 ""][:-1] (rightSideView [1 2 3 4])
-// // -- Test Cases End -- //
-finished
+func test
+    assertEqual [1 3 4 ""][:-1] (rightSideView [1 2 3 "null" 5 "null" 4])
+    assertEqual [1 3 ""][:-1] (rightSideView [1 "null" 3])
+    assertEqual [] (rightSideView [])
+    assertEqual [1 3 4 ""][:-1] (rightSideView [1 2 3 4])
+end

@@ -45,7 +45,7 @@ end
 fails := 0
 total := 0
 
-func assertsameelements want:[][]num got:[][]num
+func assertEqualsameelements want:[][]num got:[][]num
     wantset := {}
     extraelements:[]string
     missingelements:[]string
@@ -83,13 +83,8 @@ func assertsameelements want:[][]num got:[][]num
     total = total + 1
 end
 
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
+func test
+    assertEqualsameelements [[1 2 3] [1 2] [1 3] [1] [2 3] [2] [3] []] (subsets [1 2 3])
+    assertEqualsameelements [[0] []] (subsets [0])
+    assertEqualsameelements [[]] (subsets [])
 end
-
-// -- Test Cases Start -- //
-assertsameelements [[1 2 3] [1 2] [1 3] [1] [2 3] [2] [3] []] (subsets [1 2 3])
-assertsameelements [[0] []] (subsets [0])
-assertsameelements [[]] (subsets [])
-// -- Test Cases End -- //
-finished

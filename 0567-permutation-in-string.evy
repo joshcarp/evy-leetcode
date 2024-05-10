@@ -49,28 +49,11 @@ func checkInclusion:bool s1:string s2:string
         l = l + 1
     end
     return s1count == s2count
-
 end
 
-fails := 0
-total := 0
-
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    end
+func test
+    assertEqual true (checkInclusion "ab" "ab")
+    assertEqual true (checkInclusion "ab" "eidbaooo")
+    assertEqual false (checkInclusion "ab" "eidboaoo")
+    assertEqual false (checkInclusion "ab" "a")
 end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
-// -- Test Cases Start -- //
-assert true (checkInclusion "ab" "ab")
-assert true (checkInclusion "ab" "eidbaooo")
-assert false (checkInclusion "ab" "eidboaoo")
-assert false (checkInclusion "ab" "a")
-// // -- Test Cases End -- //
-finished

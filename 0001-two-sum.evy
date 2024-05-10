@@ -36,24 +36,10 @@ func twosum:[]num nums:[]num target:num
     return []
 end
 
-fails := 0
-total := 0
 
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    end
+
+func test
+    assertEqual [0 1] (twosum [2 7 11 15] 9)
+    assertEqual [1 2] (twosum [3 2 4] 6)
+    assertEqual [0 1] (twosum [3 3] 6)
 end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
-// -- Test Cases Start -- //
-assert [0 1] (twosum [2 7 11 15] 9)
-assert [1 2] (twosum [3 2 4] 6)
-assert [0 1] (twosum [3 3] 6)
-// -- Test Cases End -- //
-finished

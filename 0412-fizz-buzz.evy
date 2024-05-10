@@ -37,24 +37,8 @@ func fizzbuzz:[]string n:num
     return ans
 end
 
-fails := 0
-total := 0
-
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    end
+func test
+    assertEqual ["1" "2" "Fizz"] (fizzbuzz 3)
+    assertEqual ["1" "2" "Fizz" "4" "Buzz"] (fizzbuzz 5)
+    assertEqual ["1" "2" "Fizz" "4" "Buzz" "Fizz" "7" "8" "Fizz" "Buzz" "11" "Fizz" "13" "14" "FizzBuzz"] (fizzbuzz 15)
 end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
-// -- Test Cases Start -- //
-assert ["1" "2" "Fizz"] (fizzbuzz 3)
-assert ["1" "2" "Fizz" "4" "Buzz"] (fizzbuzz 5)
-assert ["1" "2" "Fizz" "4" "Buzz" "Fizz" "7" "8" "Fizz" "Buzz" "11" "Fizz" "13" "14" "FizzBuzz"] (fizzbuzz 15)
-// -- Test Cases End -- //
-finished

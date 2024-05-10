@@ -37,24 +37,8 @@ func lengthOfLongestSubstring:num s:string
     return longestsubstring
 end
 
-fails := 0
-total := 0
-
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    end
+func test
+    assertEqual 3 (lengthOfLongestSubstring "abcabcbb")
+    assertEqual 1 (lengthOfLongestSubstring "bbbbb")
+    assertEqual 3 (lengthOfLongestSubstring "pwwkew")
 end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
-// -- Test Cases Start -- //
-assert 3 (lengthOfLongestSubstring "abcabcbb")
-assert 1 (lengthOfLongestSubstring "bbbbb")
-assert 3 (lengthOfLongestSubstring "pwwkew")
-// -- Test Cases End -- //
-finished

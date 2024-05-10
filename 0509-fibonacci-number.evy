@@ -32,24 +32,8 @@ func fibonacci:num n:num
     return one
 end
 
-fails := 0
-total := 0
-
-func assert want:any got:any
-    total = total + 1
-    if want != got
-        fails = fails + 1
-        printf "want != got: want %v got %v\n" want got
-    end
+func test
+    assertEqual 1 (fibonacci 2)
+    assertEqual 2 (fibonacci 3)
+    assertEqual 3 (fibonacci 4)
 end
-
-func finished
-    printf "%v of %v tests passed\n" (total - fails) total
-end
-
-// -- Test Cases Start -- //
-assert 1 (fibonacci 2)
-assert 2 (fibonacci 3)
-assert 3 (fibonacci 4)
-// -- Test Cases End -- //
-finished
